@@ -3,52 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início | Nossa Organização</title>
-    <link rel="stylesheet" href="css/styleindex.css">
+    <title>Organização de Voluntários - Início</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+    <!-- Header -->
     <header>
-        <h1>Bem-vindo à Nossa Organização</h1>
         <nav>
-            <ul>
-                <li><a href="index.html" class="ativo">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+            <div class="logo">&#128153; Voluntários</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="projeto.html">Projetos</a></li>
+                <li><a href="cadastro.html">Seja Voluntário</a></li>
+
             </ul>
         </nav>
     </header>
 
-    <main class="conteudo">
-        <section>
-            <div class="titulo-com-logo">
-                <img src="img/logo.webp" alt="logo da organização" loading="lazy" class="logo-ao-lado">
-                <h2>Quem Somos</h2>
-            </div>
-            <p>Somos uma organização sem fins lucrativos dedicada a transformar vidas através de projetos sociais, educação e inclusão. Nosso foco é criar oportunidades e promover o bem-estar de comunidades carentes.</p>
-        </section>
-
-        <section class="missao-section">
-            <div class="titulo-com-logo">
-                <img src="img/missao.png" alt="Logo " class="logo-ao-lado" loading="lazy">
-                <h2>Missão</h2>
-            </div>
-            <p>Levar esperança, conhecimento e dignidade a todos que precisam, por meio de ações colaborativas e sustentáveis.</p>
-        </section>
-
-        <section class="contato">
-        <div class="titulo-com-logo">
-            <img src="img/phone.png" alt="Ícone de Contato" class="logo-ao-lado" loading="lazy">
-            <h2>Entre em Contato</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforme Vidas com Voluntariado</h1>
+            <p>Somos uma organização dedicada à inclusão social e ao atendimento de famílias. Junte-se a nós e faça a diferença!</p>
+            <a href="cadastro.html" class="btn-primary">Quero Ser Voluntário</a>
         </div>
-        <p><strong>Email:</strong> contato@organizacao.org.br</p>
-        <p><strong>Telefone:</strong> (11) 91234-5678</p>
-        <p><strong>Endereço:</strong> Rua Esperança, 123 - São Paulo/SP</p>
-        </section>
-</main>
+    </section>
 
+    <!-- Quem Somos -->
+    <section class="about">
+        <h2>Quem Somos</h2>
+        <p>Somos uma organização sem fins lucrativos que atua no atendimento de famílias em inclusão social, promovendo dignidade, esperança e oportunidades para quem mais precisa.</p>
+        
+    </section>  
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Nossa Organização — Todos os direitos reservados.</p>
+        <p>&copy; 2025 Organização de Voluntários. Todos os direitos reservados.</p>
+     <p>Feito com &#10084;&#65039; para transformar vidas</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
