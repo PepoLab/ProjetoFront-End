@@ -70,7 +70,7 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
@@ -111,7 +111,7 @@ nav a.active {
     
     /* Degradê sutil para o fundo */
     background: linear-gradient(135deg, rgba(0, 34, 185, 0.8) 0%, rgba(253, 152, 0, 0.7) 100%),
-                url('caminho/para/imagem-de-fundo.jpg') center/cover;
+                url('img/fundocad.jpg') center/cover;
     background-blend-mode: multiply; /* Mistura o degradê com a imagem */
 }
 
@@ -380,7 +380,7 @@ form legend {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600; 
-    color: #444;
+    color: #444444;
 }
 
 .form-group input,
@@ -434,15 +434,15 @@ form legend {
 footer {
     text-align: center;
     padding: 2rem;
-    background: #1e1e1e; /* Fundo escuro */
-    color: #ddd;
+    background: #eef1ff;; /* Fundo escuro */
+    color: #000000;
     margin-top: 4rem;
     font-size: 0.9rem;
 }
 
 footer p:last-child {
     margin-top: 0.5rem;
-    color: #fd9800;
+    color: #0015ff;
 }
 
 .contact {
