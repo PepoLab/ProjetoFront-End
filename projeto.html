@@ -1,72 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💡 Projetos | Descubra Nossas Ações de Impacto</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💡 Voluntários | Projetos Sociais e Como Ajudar</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">💙 Voluntários</div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <ul id="navMenu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projeto.html" class="active">Projetos</a></li>
-                <li><a href="cadastro.html">Seja Voluntário</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="hero hero-projeto">
-        <div class="hero-content">
-            <h1>Nossas Mãos na Comunidade</h1>
-            <p>Conheça os projetos que estamos desenvolvendo e veja onde suas habilidades podem gerar a maior transformação.</p>
-        </div>
+<body>
+  <!-- ====== Cabeçalho / Navegação ====== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="img/logo-removebg-preview.png" alt="Logo Voluntários" class="logo">
+        <span class="logo-text">Voluntários</span>
+      </div>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+      <ul id="navMenu" class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projeto.html" class="active">Projetos</a></li>
+        <li><a href="cadastro.html">Seja Voluntário</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ====== Conteúdo Principal ====== -->
+  <main>
+
+    <!-- ====== Hero Section ====== -->
+    <section class="hero hero-projetos">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Nossos Projetos e Ações de Impacto</h1>
+        <p>Conheça as iniciativas que transformam vidas e descubra como participar ativamente da nossa causa.</p>
+        <a href="cadastro.html" class="btn-primary">Quero Ser Voluntário</a>
+      </div>
     </section>
 
-    <main>
-        <section class="about projects-areas">
-            <h2>Nossas Áreas de Atuação</h2>
-            <p>Nossos projetos são desenhados com cuidado e focados em pilares essenciais para a autonomia e dignidade das famílias. Sua contribuição é vital para o sucesso de cada iniciativa.</p>
+    <!-- ====== Projetos em Destaque ====== -->
+    <section class="projects">
+      <h2>Projetos em Andamento</h2>
 
-            <div class="impact-cards">
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Capacitação e Educação</h3>
-                    <p>Foco em reforço escolar para crianças e adolescentes, e oficinas profissionalizantes para adultos, abrindo portas para o mercado de trabalho.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🥕</div>
-                    <h3>Segurança Alimentar</h3>
-                    <p>Distribuição contínua de cestas básicas e promoção de hortas comunitárias, garantindo o direito básico à alimentação nutritiva.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>Inclusão e Cidadania</h3>
-                    <p>Ações sociais, orientação jurídica e promoção de eventos culturais que fortalecem a comunidade e o exercício da cidadania plena.</p>
-                </div>
-            </div>
-        </section>
+      <div class="projects-container">
 
-        <section class="project-details">
-            <h2>Projetos em Destaque</h2>
-            
-            <div class="project-item">
-                <h3>&#128105;&#8205;&#127891; Projeto Geração do Futuro</h3>
-                <p>Oferece aulas de reforço em matemática e português, além de introdução à informática, para jovens de 10 a 16 anos. Buscamos voluntários com paixão por ensino.</p>
-                <p class="project-status">Status: Recrutando Voluntários de Segunda a Quinta.</p>
-            </div>
+        <article class="project-card">
+          <img src="img/humanitario.webp" alt="Distribuição de alimentos em comunidade" class="project-image">
+          <div class="project-info">
+            <h3>🍞 Projeto Alimentar Esperança</h3>
+            <p>Oferecemos cestas básicas e refeições prontas para famílias em situação de vulnerabilidade. A ação conta com a ajuda de voluntários em todo o estado.</p>
+          </div>
+        </article>
 
-            <div class="project-item">
-                <h3>&#127881; Campanha Mãos Amigas</h3>
-                <p>Ação sazonal de arrecadação e distribuição de kits de higiene pessoal e roupas de inverno. Envolve logística, triagem e distribuição direta às famílias.</p>
-                <p class="project-status">Status: Ativa! Buscamos apoio logístico e motoristas.</p>
-            </div>
+        <article class="project-card">
+          <img src="img/educacao.jpg" alt="Aula voluntária de reforço escolar" class="project-image">
+          <div class="project-info">
+            <h3>📚 Educação para Todos</h3>
+            <p>Promovemos oficinas e reforço escolar para crianças e adolescentes, incentivando o aprendizado e a cidadania.</p>
+          </div>
+        </article>
 
-            <div class="project-item">
-                <h3>&#127912; Círculo de Talentos Comunitários</h3>
-                <p>Organização de workshops e palestras com voluntários especialistas em temas como finanças pessoais, saúde mental e pequenos negócios.</p>
-                <p class="project-status">Status: Sempre aberto a novos palestrantes voluntários.</p>
-            </div>
+        <article class="project-card">
+          <img src="img/fundocad.jpg" alt="Grupo de inclusão social e atividades" class="project-image">
+          <div class="project-info">
+            <h3>💪 Comunidade Ativa</h3>
+            <p>Iniciativa voltada para a inclusão social por meio de atividades esportivas, culturais e de convivência comunitária.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== Como Ajudar / Doações ====== -->
+    <section class="doe">
+      <h2>Como Você Pode Ajudar</h2>
+      <p>Existem várias formas de contribuir com o nosso trabalho e gerar impacto positivo na vida de muitas pessoas.</p>
+
+      <div class="donate-options">
+        <article class="donate-card">
+          <h3>💰 Doação Financeira</h3>
+          <p>Contribua com qualquer valor. As doações são usadas para manter nossos projetos e atender famílias cadastradas.</p>
+          <a href="cadastro.html" class="btn-secondary">Fazer Doação</a>
+        </article>
+
+        <article class="donate-card">
+          <h3>🛒 Doação de Itens</h3>
+          <p>Doe alimentos não perecíveis, roupas ou brinquedos. Você pode entregar em nossos pontos de coleta ou combinar a retirada.</p>
+        </article>
+
+        <article class="donate-card">
+          <h3>⏰ Tempo e Trabalho Voluntário</h3>
+          <p>Ofereça suas habilidades e tempo para nossos projetos. Toda ajuda é bem-vinda!</p>
+          <a href="cadastro.html" class="btn-primary">Torne-se Voluntário</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== Rodapé ====== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-contact">
+        <img src="img/phone.png" alt="Ícone de telefone" class="footer-icon">
+        <p>📞 (11) 99999-9999 | ✉️ contato@voluntarios.org</p>
+        <p>Rua da Esperança, 123 - São Paulo/SP</p>
+      </div>
+      <div class="footer-copy">
+        <p>© 2025 Voluntários - Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

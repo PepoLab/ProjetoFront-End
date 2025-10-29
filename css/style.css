@@ -1,550 +1,489 @@
-/* RESET BÁSICO */
+/* ==========================
+   RESET BÁSICO
+   ========================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffffff; /* Fundo branco para o conteúdo principal */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
 }
 
+/* ==========================
+   CONTAINER GLOBAL
+   ========================== */
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 h2 {
-    font-size: 2.2rem;
-    color: #0022b9; /* Cor principal forte */
-    margin-bottom: 1.5rem;
-    text-align: center;
-    padding-top: 1rem;
-    border-bottom: 3px solid #fd9800; /* Linha de destaque */
-    display: inline-block;
-    width: auto;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 0.5rem;
+  font-size: 2.2rem;
+  color: #0022b9;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-top: 1rem;
+  border-bottom: 3px solid #fd9800;
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }
-
 
 /* ==========================
-   Header e Navegação
+   HEADER E NAVEGAÇÃO
    ========================== */
 header {
-    background: linear-gradient(135deg, #0022b9 0%, #fd9800 100%);
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #0022b9 0%, #fd9800 100%);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+  height: 45px;
+  width: auto;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    opacity: 0.9;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 }
 
-nav a:hover,
-nav a.active {
-    opacity: 1;
-    font-weight: 700;
-    border-bottom: 2px solid white;
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  opacity: 0.9;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  opacity: 1;
+  font-weight: 700;
+  border-bottom: 2px solid white;
 }
 
 .menu-toggle {
-    display: none; /* Esconder em desktop */
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
 }
-
 
 /* ==========================
-   Hero Section 
+   HERO SECTION
    ========================== */
 .hero {
-    /* Ajuste para mover o conteúdo abaixo do header fixo */
-    padding-top: 70px; 
-    min-height: 80vh; /* Altura mínima para não ser tão invasivo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    
-    /* Degradê sutil para o fundo */
-    background: linear-gradient(135deg, rgba(0, 34, 185, 0.8) 0%, rgba(253, 152, 0, 0.7) 100%),
-                url('caminho/para/imagem-de-fundo.jpg') center/cover;
-    background-blend-mode: multiply; /* Mistura o degradê com a imagem */
+  min-height: 80vh;
+  padding-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: url("../img/fundocad.jpg") center/cover no-repeat;
+  position: relative;
 }
 
-.hero-cadastro, .hero-projeto {
-    min-height: 40vh; /* Menor para páginas internas */
-    background: linear-gradient(135deg, rgba(0, 34, 185, 0.9) 0%, rgba(253, 152, 0, 0.8) 100%);
+.hero-overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 34, 185, 0.8), rgba(253, 152, 0, 0.7));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 2rem;
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    margin-bottom: 2.5rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: 2rem;
 }
 
+.hero-cadastro,
+.hero-projetos {
+  min-height: 40vh;
+  background: linear-gradient(135deg, rgba(0, 34, 185, 0.9), rgba(253, 152, 0, 0.8));
+}
 
 /* ==========================
-   Botões
+   BOTÕES
    ========================== */
-.btn-primary, .btn-secondary {
-    display: inline-block; /* Para funcionar como bloco na largura */
-    text-decoration: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
-    background: #0022b9; /* Azul forte */
-    color: white;
+  background: #0022b9;
+  color: white;
 }
 
 .btn-secondary {
-    background: #fd9800; /* Laranja/Amarelo */
-    color: white;
-    border-color: #fd9800;
+  background: #fd9800;
+  color: white;
 }
 
 .btn-primary:hover {
-    background: #001a8f; /* Azul mais escuro */
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #001a8f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary:hover {
-    background: #e68d00; /* Laranja mais escuro */
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #e68d00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-
-/* Remoção do efeito de brilho complexo para simplificar e focar na cor */
-.btn-primary::after, .btn-secondary::after {
-    display: none;
-}
-
-.cta-buttons {
-    display: flex;
-    flex-direction: row; /* lado a lado */
-    gap: 1.5rem; /* espaço entre os botões */
-    justify-content: center; /* centraliza horizontalmente */
-    align-items: center;
-    flex-wrap: wrap; /* quebra em telas pequenas */
-    margin-top: 2rem;
-}
-
 
 /* ==========================
-   Seções de Conteúdo (Index/Projetos)
+   ABOUT / MISSÃO
    ========================== */
-.about, .how-we-work, .stats-section, .project-details, .contact {
-    padding: 3rem 2rem;
-    text-align: center;
+.about {
+  padding: 4rem 2rem;
 }
 
-.about p, .project-details p {
-    max-width: 900px;
-    margin: 1rem auto 2rem;
-    font-size: 1.1rem;
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-/* Cartões de Impacto / Detalhes de Projeto */
-.cards-container, .impact-cards {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+.about-text {
+  flex: 1 1 400px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================
+   CARDS DE IMPACTO
+   ========================== */
+.how-we-work {
+  background: #f9f9f9;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .card {
-    background: #f9f9f9;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px; /* Base para 3 colunas em desktop */
-    max-width: 350px;
-    transition: transform 0.3s ease;
-    text-align: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  flex: 1 1 300px;
+  max-width: 350px;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
-    color: #0022b9;
-    margin-bottom: 0.75rem;
-    font-size: 1.5rem;
-}
-
-/* Estilos para a seção de Projetos (projeto.html) */
-.project-details {
-    background: #eef2ff; /* Fundo suave para a seção */
-    padding-bottom: 4rem;
-}
-
-.project-item {
-    background: white;
-    border-left: 5px solid #fd9800;
-    padding: 1.5rem;
-    margin: 2rem auto;
-    max-width: 800px;
-    text-align: left;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.project-item h3 {
-    color: #0022b9;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-}
-
-.project-status {
-    font-weight: bold;
-    color: #fd9800;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
+  color: #0022b9;
+  margin-bottom: 0.75rem;
 }
 
 /* ==========================
-   Estatísticas (Stats)
+   PROJETOS
+   ========================== */
+.projects {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.project-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 350px;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+/* ==========================
+   DOAÇÕES
+   ========================== */
+.doe {
+  background: #eef2ff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.donate-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.donate-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  flex: 1 1 300px;
+}
+
+/* ==========================
+   FORMULÁRIO (CADASTRO)
+   ========================== */
+.form-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  background: #fdfdfd;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-form fieldset {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  background: white;
+}
+
+.cadastro-form legend {
+  font-weight: 700;
+  color: #0022b9;
+  font-size: 1.2rem;
+}
+
+.cadastro-form label {
+  display: block;
+  margin: 0.8rem 0 0.4rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.cadastro-form input,
+.cadastro-form select,
+.cadastro-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cadastro-form input:focus,
+.cadastro-form select:focus,
+.cadastro-form textarea:focus {
+  border-color: #fd9800;
+  outline: none;
+  box-shadow: 0 0 8px rgba(253, 152, 0, 0.3);
+}
+
+.cadastro-form button {
+  display: block;
+  margin: 1rem auto 0;
+}
+
+/* ==========================
+   ESTATÍSTICAS
    ========================== */
 .stats-section {
-    background: #0022b9;
-    color: white;
-    padding: 4rem 2rem;
+  background: #0022b9;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
 .stats-section h2 {
-    color: white;
-    border-bottom: 3px solid #fd9800;
+  color: white;
+  border-bottom: 3px solid #fd9800;
 }
 
 .stats-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 3rem;
-}
-
-.stat-item {
-    flex: 1 1 200px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 
 .stat-item .number {
-    display: block;
-    font-size: 3rem;
-    font-weight: 800;
-    color: #fd9800;
-    line-height: 1;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fd9800;
 }
-
-.stat-item p {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    font-weight: 500;
-}
-
 
 /* ==========================
-   Call to Action (CTA)
-   ========================== */
-.cta, .cta-projects {
-    background: #f0f0f0;
-    text-align: center;
-    padding: 4rem 2rem;
-    margin-top: 3rem;
-    border-top: 1px solid #ddd;
-}
-
-.cta-content h2 {
-    color: #0022b9;
-    border-bottom: none;
-    margin-bottom: 1rem;
-}
-
-.cta-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-
-/* ==========================
-   Formulário (Cadastro) - PADRÃO MODERNO
-   ========================== */
-.signup-section {
-    padding: 2rem;
-    margin-top: 100px; 
-    max-width: 800px; 
-    margin-left: auto;
-    margin-right: auto;
-    background: #fcfcfc; 
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05); 
-}
-
-.signup-section h2 {
-    color: #0022b9; 
-    border-bottom: 3px solid #fd9800; 
-    margin-bottom: 1.5rem;
-    display: inline-block; 
-    padding-bottom: 0.5rem;
-}
-
-form fieldset {
-    border: 1px solid #ddd; 
-    border-radius: 10px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 2rem;
-    background: white;
-}
-
-form legend {
-    font-weight: 700;
-    color: #0022b9; 
-    font-size: 1.2rem;
-    padding: 0 1rem;
-}
-
-.form-group {
-    margin-bottom: 1.2rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600; 
-    color: #444;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: 8px; 
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: #fd9800; 
-    outline: none;
-    box-shadow: 0 0 8px rgba(253, 152, 0, 0.3); 
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-.form-group small {
-    display: block;
-    margin-top: 0.25rem;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.success-message {
-    /* CORREÇÃO APLICADA AQUI. A MENSAGEM ESTÁ OCULTA POR PADRÃO. */
-    display: none; 
-    
-    background: #e6ffed;
-    color: #00702d;
-    border: 1px solid #00c74e;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-}
-
-
-/* ==========================
-   Footer e Contato
+   FOOTER
    ========================== */
 footer {
-    text-align: center;
-    padding: 2rem;
-    background: #1e1e1e; /* Fundo escuro */
-    color: #ddd;
-    margin-top: 4rem;
-    font-size: 0.9rem;
+  background: #1e1e1e;
+  color: #ddd;
+  text-align: center;
+  padding: 2rem;
 }
 
-footer p:last-child {
-    margin-top: 0.5rem;
-    color: #fd9800;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.contact {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: #f0f0f0;
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.contact h2 {
-    border-bottom: none;
+.footer-icon {
+  width: 24px;
+  height: auto;
 }
 
-.contact address {
-    font-style: normal;
-    margin-top: 1.5rem;
-    display: inline-block;
-    text-align: left;
+.footer-copy p {
+  margin-top: 1rem;
+  color: #fd9800;
 }
-
-.contact address p {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-}
-
 
 /* ==========================
-   Responsividade (Mobile First)
+   RESPONSIVIDADE
    ========================== */
-
-/* Telas menores que 850px (tablets e celulares) */
 @media (max-width: 850px) {
-    
-    /* Navegação */
-    nav {
-        padding: 0 1.5rem;
-    }
-    
-    nav ul {
-        display: none; /* Esconde o menu de navegação padrão */
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 66px; /* Altura do header */
-        left: 0;
-        background: #001a8f;
-        padding: 1rem 0;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    nav ul.open {
-        display: flex; /* Mostra o menu quando ativo */
-    }
-    
-    nav ul li {
-        width: 100%;
-        text-align: center;
-    }
-    
-    nav a {
-        display: block;
-        padding: 0.75rem 0;
-    }
-    
-    .menu-toggle {
-        display: block; /* Mostra o botão hambúrguer */
-    }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 66px;
+    left: 0;
+    background: #001a8f;
+    padding: 1rem 0;
+  }
 
-    /* Hero */
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
+  .nav-menu.open {
+    display: flex;
+  }
 
-    /* Formulário */
-    .signup-section {
-        padding: 1rem;
-    }
-    
-    .btn-primary, .btn-secondary {
-        max-width: 100%; /* Botões de largura total */
-        flex: 1 1 100%;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
-    /* Cartões */
-    .cards-container, .impact-cards, .stats-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .card, .stat-item {
-        max-width: 100%;
-    }
-    
-    .stat-item .number {
-        font-size: 2.5rem;
-    }
+  .about-content {
+    flex-direction: column;
+  }
+
+  .cards-container,
+  .projects-container,
+  .donate-options,
+  .stats-container {
+    flex-direction: column;
+  }
+
+  .project-card,
+  .donate-card {
+    max-width: 100%;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
 }
