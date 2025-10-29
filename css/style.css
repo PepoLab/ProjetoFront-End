@@ -79,13 +79,14 @@ header {
   gap: 2rem;
 }
 
-.nav-menu a {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  opacity: 0.9;
-  border-bottom: 2px solid transparent;
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    opacity: 0.9;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
 }
 
 .nav-menu a:hover,
@@ -108,15 +109,19 @@ header {
    HERO SECTION
    ========================== */
 .hero {
-  min-height: 80vh;
-  padding-top: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  background: url("../img/fundocad.jpg") center/cover no-repeat;
-  position: relative;
+    /* Ajuste para mover o conteúdo abaixo do header fixo */
+    padding-top: 70px; 
+    min-height: 80vh; /* Altura mínima para não ser tão invasivo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    
+    /* Degradê sutil para o fundo */
+    background: linear-gradient(135deg, rgba(0, 34, 185, 0.8) 0%, rgba(253, 152, 0, 0.7) 100%),
+                url('caminho/para/imagem-de-fundo.jpg') center/cover;
+    background-blend-mode: multiply; /* Mistura o degradê com a imagem */
 }
 
 .hero-overlay {
@@ -352,11 +357,15 @@ header {
   font-size: 1.2rem;
 }
 
-.cadastro-form label {
-  display: block;
-  margin: 0.8rem 0 0.4rem;
-  font-weight: 600;
-  color: #444;
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600; 
+    color: #444;
 }
 
 .cadastro-form input,
@@ -416,22 +425,23 @@ header {
    FOOTER
    ========================== */
 footer {
-  background: #1e1e1e;
-  color: #ddd;
-  text-align: center;
-  padding: 2rem;
+    text-align: center;
+    padding: 2rem;
+    background: #1e1e1e; /* Fundo escuro */
+    color: #ddd;
+    margin-top: 4rem;
+    font-size: 0.9rem;
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+footer p:last-child {
+    margin-top: 0.5rem;
+    color: #fd9800;
 }
 
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+.contact {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #f0f0f0;
 }
 
 .footer-icon {
