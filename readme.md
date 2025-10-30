@@ -9,11 +9,6 @@ Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Fron
 O **Voluntários** é uma plataforma fictícia de apoio social que promove ações de solidariedade, incentivo à educação e voluntariado.  
 O site permite que usuários conheçam os projetos, cadastrem-se como voluntários e compreendam o impacto social das ações.
 
-O projeto evolui em três entregas principais:
-1. **Entrega 1 – Estrutura HTML5 Semântica**
-2. **Entrega 2 – Estilização Avançada com CSS**
-3. **Entrega 3 – Interatividade e SPA com JavaScript**
-
 ---
 
 ## 🚀 Funcionalidades
@@ -45,7 +40,7 @@ O projeto evolui em três entregas principais:
 ---
 
 ### ⚙️ Entrega 3 — JavaScript Avançado (SPA e DOM)
-**Arquivo:** `js/script.js`
+
 
 **Principais implementações:**
 | Requisito | Implementação |
@@ -59,6 +54,16 @@ O projeto evolui em três entregas principais:
 | 🧾 Máscaras de input | Aplicadas dinamicamente a CPF, CEP e Telefone |
 | ✅ Validação de formulário | Uso de validação nativa + feedback visual (toast) |
 | 🧠 Modularidade | Separação de lógica por função (`render`, `wireInternalLinks`, `attachFormHandlers`) |
+
+---
+
+### ⚙️ Entrega 4 — WCAG E Minificação
+
+
+**Principais implementações:**
+|Minificação do CSS, JAVA E HTML
+| 
+|
 
 ---
 
