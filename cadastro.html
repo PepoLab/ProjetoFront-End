@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- ====== Metadados ====== -->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecionando para Cadastro | Voluntários</title>
+
+  <!-- ====== SEO e Acessibilidade ====== -->
+  <meta name="description" content="Página de redirecionamento para o formulário de cadastro de voluntários.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0022b9">
+
+  <!-- ====== Performance ====== -->
+  <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
+  <link rel="preload" href="css/style.min.css" as="style">
+  <link rel="preload" href="js/script.min.js" as="script">
+
+  <!-- ====== Redirecionamento SPA ====== -->
   <meta http-equiv="refresh" content="0; url=index.html#/cadastro">
-  <title>Redirecionando...</title>
+
+  <!-- ====== Estilo básico inline (fallback visual) ====== -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #0022b9;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+    .loader {
+      border: 4px solid #ddd;
+      border-top: 4px solid #0022b9;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin-top: 1rem;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
+
 <body>
+  <main role="main" aria-busy="true">
+    <p>Redirecionando para a página de Cadastro...</p>
+    <div class="loader" role="status" aria-label="Carregando"></div>
+  </main>
+
+  <!-- ====== Redirecionamento JS seguro ====== -->
   <script>
-    if (!location.hash) location.replace("index.html#/cadastro");
+    // Garante que o redirecionamento funcione mesmo sem suporte à meta refresh
+    if (!location.hash) {
+      location.replace("index.html#/cadastro");
+    } else {
+      // Evita loops e mantém o hash existente
+      window.location.href = location.href;
+    }
   </script>
-  <p>Redirecionando para a página de Cadastro...</p>
 </body>
 </html>

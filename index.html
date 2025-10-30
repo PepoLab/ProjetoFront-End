@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- ====== Metadados Básicos ====== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💙 Voluntários | Faça a Diferença</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ====== SEO e Acessibilidade ====== -->
+  <meta name="description" content="Voluntários — uma rede solidária que transforma vidas por meio de projetos sociais e inclusão.">
+  <meta name="theme-color" content="#0022b9">
+  <meta name="author" content="Projeto Voluntários">
+  <meta name="robots" content="index, follow">
+
+  <!-- ====== Performance e Produção ====== -->
+  <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
+  <link rel="preload" href="css/style.min.css" as="style">
+  <link rel="preload" href="js/script.min.js" as="script">
+
+  <!-- Versão principal de estilo -->
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <!-- Ícone da aba (opcional, melhora usabilidade) -->
+  <link rel="icon" href="img/logo-removebg-preview.png" type="image/png">
 </head>
 
 <body>
   <!-- ====== Cabeçalho / Navegação ====== -->
   <header>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navegação principal">
       <div class="logo-container">
-        <img src="img/logo-removebg-preview.png" alt="Logo Voluntários" class="logo">
+        <img src="img/logo-removebg-preview.png" alt="Logo do projeto Voluntários" class="logo">
         <span class="logo-text">Voluntários</span>
       </div>
 
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir ou fechar menu de navegação" aria-expanded="false">☰</button>
 
       <ul id="navMenu" class="nav-menu">
-        <li><a href="#/home" class="active">Início</a></li>
-        <li><a href="#/projetos">Projetos</a></li>
-        <li><a href="#/cadastro">Seja Voluntário</a></li>
+        <li><a href="#/home" class="active" tabindex="0">Início</a></li>
+        <li><a href="#/projetos" tabindex="0">Projetos</a></li>
+        <li><a href="#/cadastro" tabindex="0">Seja Voluntário</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- ====== Conteúdo Principal (SPA container) ====== -->
-  <main id="app"></main>
+  <main id="app" role="main"></main>
 
   <noscript>
     <p style="text-align:center; padding:2rem; color:red;">
@@ -39,7 +56,7 @@
   <footer>
     <div class="footer-container">
       <div class="footer-contact">
-        <img src="img/phone.png" alt="Ícone de telefone" class="footer-icon">
+        <img src="img/phone.png" alt="Ícone de telefone" class="footer-icon" loading="lazy">
         <p>📞 (11) 99999-9999 | ✉️ contato@voluntarios.org</p>
         <p>Rua da Esperança, 123 - São Paulo/SP</p>
       </div>
@@ -49,6 +66,7 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- ====== Scripts ====== -->
+  <script src="js/script.min.js" defer></script>
 </body>
 </html>

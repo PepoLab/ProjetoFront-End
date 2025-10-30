@@ -4,16 +4,27 @@
    ====================================================== */
 
 /* ==========================
-   MENU MOBILE
+   MENU MOBILE — Revisado
    ========================== */
 function toggleMenu() {
   const menu = document.getElementById("navMenu");
-  menu?.classList.toggle("active");
+  if (menu) menu.classList.toggle("active");
 }
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches("#navMenu a")) {
-    document.getElementById("navMenu")?.classList.remove("active");
+  const toggleBtn = e.target.closest(".menu-toggle");
+  const link = e.target.closest("#navMenu a");
+
+  // Abre/fecha o menu mobile
+  if (toggleBtn) {
+    e.preventDefault();
+    toggleMenu();
+  }
+
+  // Fecha o menu ao clicar em um link
+  if (link) {
+    const nav = document.getElementById("navMenu");
+    nav?.classList.remove("active");
   }
 });
 
@@ -27,7 +38,6 @@ const templates = {
       <div class="hero-content">
         <h1>O Poder da Solidariedade em Ação</h1>
         <p>Junte-se à nossa causa! Transforme a realidade de famílias através da inclusão social, dignidade e apoio.</p>
-        <a href="#/cadastro" class="btn-primary">Faça Sua Inscrição Agora</a>
       </div>
     </section>
 
@@ -39,7 +49,7 @@ const templates = {
           <a href="#/projetos" class="btn-secondary">Conheça Nossos Projetos &rarr;</a>
         </div>
         <div class="about-image">
-          <img src="img/missao-removebg-preview.png" alt="Nossa missão">
+          <img src="img/missao.webp" alt="Nossa missão">
         </div>
       </div>
     </section>
@@ -74,11 +84,10 @@ const templates = {
 
   projetos: `
     <section class="hero hero-projetos">
-      <div class="hero-overlay"></></div>
+      <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1>Nossos Projetos e Ações</h1>
         <p>Conheça as iniciativas que transformam vidas.</p>
-        <a href="#/cadastro" class="btn-primary">Seja Voluntário</a>
       </div>
     </section>
 
@@ -92,13 +101,13 @@ const templates = {
         </article>
 
         <article class="project-card">
-          <img src="img/educacao.jpg" alt="Aulas voluntárias" class="project-image">
+          <img src="img/educacao.webp" alt="Aulas voluntárias" class="project-image">
           <h3>📚 Educação para Todos</h3>
           <p>Oficinas e reforço escolar para crianças e jovens.</p>
         </article>
 
         <article class="project-card">
-          <img src="img/fundocad.jpg" alt="Atividades comunitárias" class="project-image">
+          <img src="img/fundocad.webp" alt="Atividades comunitárias" class="project-image">
           <h3>💪 Comunidade Ativa</h3>
           <p>Projetos de inclusão social e convivência comunitária.</p>
         </article>
@@ -195,7 +204,6 @@ const templates = {
       </form>
 
       <div id="sucessMessage" class="success-message">✅ Cadastro realizado com sucesso!</div>
-      <div id="tabelaVoluntarios"></div>
     </section>
   `
 };
@@ -231,7 +239,7 @@ window.addEventListener("hashchange", () => render(route()));
 document.addEventListener("DOMContentLoaded", () => render(route()));
 
 /* ======================================================
-   FORMULÁRIO COMPLETO — Máscaras + LocalStorage
+   FORMULÁRIO — Máscaras + LocalStorage
    ====================================================== */
 function initForm() {
   const form = document.getElementById("formVoluntario");
@@ -243,7 +251,7 @@ function initForm() {
   const tel = form.querySelector("#telefone");
   const cep = form.querySelector("#cep");
 
-  // Máscara CPF
+  // Máscaras
   cpf?.addEventListener("input", () => {
     let v = onlyDigits(cpf.value).slice(0, 11);
     if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
@@ -252,7 +260,6 @@ function initForm() {
     cpf.value = v;
   });
 
-  // Máscara Telefone
   tel?.addEventListener("input", () => {
     let v = onlyDigits(tel.value).slice(0, 11);
     if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
@@ -261,35 +268,22 @@ function initForm() {
     tel.value = v;
   });
 
-  // Máscara CEP
   cep?.addEventListener("input", () => {
     let v = onlyDigits(cep.value).slice(0, 8);
     if (v.length > 5) v = v.replace(/(\d{5})(\d{0,3})/, "$1-$2");
     cep.value = v;
   });
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
     if (!form.checkValidity()) {
       alert("Por favor, preencha todos os campos obrigatórios corretamente.");
       return;
     }
 
-    const data = {
-      nome: form.nome.value.trim(),
-      email: form.email.value.trim(),
-      cpf: form.cpf.value.trim(),
-      telefone: form.telefone.value.trim(),
-      nascimento: form.nascimento.value,
-      endereco: form.endereco.value.trim(),
-      cep: form.cep.value.trim(),
-      cidade: form.cidade.value.trim(),
-      estado: form.estado.value,
-      area: form.area.value,
-      mensagem: form.mensagem.value.trim(),
-      dataCadastro: new Date().toLocaleDateString()
-    };
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.dataCadastro = new Date().toLocaleDateString();
 
     const lista = JSON.parse(localStorage.getItem("voluntarios") || "[]");
     lista.push(data);
@@ -301,46 +295,17 @@ function initForm() {
 
     setTimeout(() => form.reset(), 2000);
     setTimeout(() => msg.classList.remove("show"), 3000);
-
-    exibirVoluntarios();
   });
-
-  exibirVoluntarios();
 }
 
 /* ======================================================
-   EXIBE VOLUNTÁRIOS
+   CORREÇÃO — CLIQUES EM BOTÕES DINÂMICOS (BANNERS)
    ====================================================== */
-function exibirVoluntarios() {
-  const lista = JSON.parse(localStorage.getItem("voluntarios") || "[]");
-  const box = document.getElementById("tabelaVoluntarios");
-  if (!box) return;
-
-  if (lista.length === 0) {
-    box.innerHTML = "<p>Nenhum voluntário cadastrado.</p>";
-    return;
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a[href^='#/']");
+  if (link) {
+    e.preventDefault();
+    const destino = link.getAttribute("href").replace("#/", "");
+    navigate(destino);
   }
-
-  let html = `
-    <table class="vol-table">
-      <thead>
-        <tr>
-          <th>Nome</th><th>Email</th><th>CPF</th>
-          <th>Telefone</th><th>Cidade</th><th>Estado</th>
-          <th>Área</th><th>Data</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  html += lista.map(v => `
-    <tr>
-      <td>${v.nome}</td><td>${v.email}</td><td>${v.cpf}</td>
-      <td>${v.telefone}</td><td>${v.cidade}</td><td>${v.estado}</td>
-      <td>${v.area}</td><td>${v.dataCadastro}</td>
-    </tr>
-  `).join("");
-
-  html += "</tbody></table>";
-  box.innerHTML = html;
-}
+});
