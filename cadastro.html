@@ -2,122 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌟 Voluntários | Cadastro de Participante</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta http-equiv="refresh" content="0; url=index.html#/cadastro">
+  <title>Redirecionando...</title>
 </head>
-
 <body>
-  <!-- ====== Cabeçalho / Navegação ====== -->
-  <header>
-    <nav class="navbar">
-      <div class="logo-container">
-        <img src="img/logo-removebg-preview.png" alt="Logo Voluntários" class="logo">
-        <span class="logo-text">Voluntários</span>
-      </div>
-
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-      <ul id="navMenu" class="nav-menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="projeto.html">Projetos</a></li>
-        <li><a href="cadastro.html" class="active">Cadastro</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- ====== Conteúdo Principal ====== -->
-  <main>
-    <!-- ====== Hero Section ====== -->
-    <section class="hero hero-cadastro">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>Cadastre-se e Faça Parte da Mudança</h1>
-        <p>Preencha o formulário abaixo para se tornar um voluntário ou fazer parte dos nossos projetos sociais.</p>
-      </div>
-    </section>
-
-    <!-- ====== Formulário de Cadastro ====== -->
-    <section class="form-section">
-      <h2>Formulário de Inscrição</h2>
-      <form action="#" method="post" class="cadastro-form">
-        
-        <!-- Dados Pessoais -->
-        <fieldset>
-          <legend>Informações Pessoais</legend>
-
-          <label for="nome">Nome Completo:</label>
-          <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-
-          <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
-
-          <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" 
-                 pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
-                 title="Digite um CPF válido no formato 000.000.000-00" required>
-
-          <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" 
-                 pattern="\(\d{2}\)\s\d{4,5}-\d{4}" 
-                 title="Digite um telefone válido no formato (11) 99999-9999" required>
-
-          <label for="nascimento">Data de Nascimento:</label>
-          <input type="date" id="nascimento" name="nascimento" required>
-        </fieldset>
-
-        <!-- Endereço -->
-        <fieldset>
-          <legend>Endereço</legend>
-
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco" placeholder="Rua, número e complemento" required>
-
-          <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" placeholder="00000-000" 
-                 pattern="\d{5}-\d{3}" 
-                 title="Digite um CEP válido no formato 00000-000" required>
-
-          <label for="cidade">Cidade:</label>
-          <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
-
-          <label for="estado">Estado:</label>
-          <select id="estado" name="estado" required>
-            <option value="">Selecione</option>
-            <option value="SP">SP</option>
-            <option value="RJ">RJ</option>
-            <option value="MG">MG</option>
-            <option value="ES">ES</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </fieldset>
-
-        <!-- Área de Interesse -->
-        <fieldset>
-          <legend>Área de Interesse</legend>
-          <label for="area">Selecione uma área:</label>
-          <select id="area" name="area" required>
-            <option value="">Escolha uma opção</option>
-            <option value="alimentacao">Apoio Alimentar</option>
-            <option value="educacao">Educação e Oficinas</option>
-            <option value="inclusao">Inclusão Social</option>
-            <option value="administrativo">Apoio Administrativo</option>
-          </select>
-
-          <label for="mensagem">Mensagem (opcional):</label>
-          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos por que deseja se voluntariar"></textarea>
-        </fieldset>
-
-        <button type="submit" class="btn-primary">Enviar Cadastro</button>
-      </form>
-    </section>
-  </main>
-
-    <footer>
-        <p>&copy; 2025 Organização de Voluntários. Todos os direitos reservados.</p>
-    <p>Construindo um futuro melhor, juntos. Feito com muito &#10084;&#65039;.</p>
-    </footer>
-
-  <script src="js/script.js"></script>
+  <script>
+    if (!location.hash) location.replace("index.html#/cadastro");
+  </script>
+  <p>Redirecionando para a página de Cadastro...</p>
 </body>
 </html>

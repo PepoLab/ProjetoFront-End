@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💙 Voluntários | Início - Faça a Diferença Hoje</title>
+  <title>💙 Voluntários | Faça a Diferença</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,88 +19,21 @@
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
       <ul id="navMenu" class="nav-menu">
-        <li><a href="index.html" class="active">Início</a></li>
-        <li><a href="projeto.html">Projetos</a></li>
-        <li><a href="cadastro.html">Seja Voluntário</a></li>
+        <li><a href="#/home" class="active">Início</a></li>
+        <li><a href="#/projetos">Projetos</a></li>
+        <li><a href="#/cadastro">Seja Voluntário</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ====== Seção Principal ====== -->
-  <main>
+  <!-- ====== Conteúdo Principal (SPA container) ====== -->
+  <main id="app"></main>
 
-    <!-- ====== Hero Section ====== -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>O Poder da Solidariedade em Ação</h1>
-        <p>Junte-se à nossa causa! Transforme a realidade de famílias através da inclusão social, dignidade e apoio.</p>
-        <a href="cadastro.html" class="btn-primary">Faça Sua Inscrição Agora</a>
-      </div>
-    </section>
-
-    <!-- ====== Nossa Missão ====== -->
-    <section class="about">
-      <div class="about-content">
-        <div class="about-text">
-          <h2>Nossa Missão</h2>
-          <p>Somos uma organização sem fins lucrativos impulsionada pela paixão em ajudar. Atuamos diretamente na base, oferecendo suporte contínuo a famílias em situação de vulnerabilidade e promovendo caminhos para a autonomia e a esperança.</p>
-          <a href="projeto.html" class="btn-secondary">Conheça Nossos Projetos &rarr;</a>
-        </div>
-        <div class="about-image">
-          <img src="img/missao-removebg-preview.png" alt="Imagem representando a missão dos voluntários">
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Como Geramos Impacto ====== -->
-    <section class="how-we-work">
-      <h2>Como Geramos Impacto</h2>
-      <div class="cards-container">
-        <article class="card">
-          <h3>🍲 Apoio Alimentar</h3>
-          <p>Garantimos a segurança alimentar com a distribuição regular de cestas básicas e refeições nutritivas.</p>
-        </article>
-        <article class="card">
-          <h3>👩‍🏫 Educação e Oficinas</h3>
-          <p>Oferecemos capacitação profissional, reforço escolar e workshops para promover o desenvolvimento pessoal.</p>
-        </article>
-        <article class="card">
-          <h3>💪 Inclusão Social</h3>
-          <p>Promovemos atividades que fortalecem os laços comunitários e o acesso a direitos e serviços básicos.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ====== Nossos Números ====== -->
-    <section class="stats-section">
-      <h2>Nosso Impacto Até Hoje</h2>
-      <div class="stats-container">
-        <div class="stat-item">
-          <span class="number">1200+</span>
-          <p>Famílias Apoiadas</p>
-        </div>
-        <div class="stat-item">
-          <span class="number">300+</span>
-          <p>Voluntários Ativos</p>
-        </div>
-        <div class="stat-item">
-          <span class="number">15+</span>
-          <p>Projetos em Andamento</p>
-        </div>
-      </div>
-    </section>
-
-<<<<<<< HEAD
-  </main>
-=======
-    </main>
-    <footer>
-        <p>&copy; 2025 Organização de Voluntários. Todos os direitos reservados.</p>
-        <p>Construindo um futuro melhor juntos.</p>
-         <p>☎️11 91234-5786        ✉️Voluntários@email.com.br</p>
-    </footer>
->>>>>>> c5e0aa4413c8080634050af00fb6e1569c073c36
+  <noscript>
+    <p style="text-align:center; padding:2rem; color:red;">
+      Este site requer JavaScript para funcionar corretamente.
+    </p>
+  </noscript>
 
   <!-- ====== Rodapé ====== -->
   <footer>

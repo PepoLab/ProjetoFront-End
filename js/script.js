@@ -1,37 +1,33 @@
 /* ======================================================
-   SCRIPT.JS — SPA + DOM + LocalStorage + Máscaras (BR)
+   SCRIPT.JS — SPA + Interações + Formulário + LocalStorage
    Projeto: Voluntários
-   Páginas: Início, Projetos, Cadastro
    ====================================================== */
 
 /* ==========================
-   MENU RESPONSIVO (HAMBÚRGUER)
+   MENU MOBILE
    ========================== */
 function toggleMenu() {
-  const navMenu = document.getElementById("navMenu");
-  if (navMenu) navMenu.classList.toggle("open");
+  const menu = document.getElementById("navMenu");
+  menu?.classList.toggle("active");
 }
+
 document.addEventListener("click", (e) => {
   if (e.target.matches("#navMenu a")) {
-    const navMenu = document.getElementById("navMenu");
-    if (navMenu && navMenu.classList.contains("open")) navMenu.classList.remove("open");
+    document.getElementById("navMenu")?.classList.remove("active");
   }
 });
 
-/* ==========================
-   TEMPLATES DAS PÁGINAS (SPA)
-   ========================== */
-/* Obs.: O fundo do HERO usa CSS (fundocad.jpg). As demais imagens são
-   as do seu /img atual: educacao.jpg, humanitario.webp, missao-removebg-preview.png,
-   logo-removebg-preview.png, phone.png */
+/* ======================================================
+   SPA — Templates
+   ====================================================== */
 const templates = {
   home: `
     <section class="hero">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1>O Poder da Solidariedade em Ação</h1>
-        <p>Junte-se à nossa causa! Transforme a realidade de famílias com inclusão social, dignidade e apoio.</p>
-        <a href="#/cadastro" class="btn-primary" data-route="/cadastro">Faça Sua Inscrição Agora</a>
+        <p>Junte-se à nossa causa! Transforme a realidade de famílias através da inclusão social, dignidade e apoio.</p>
+        <a href="#/cadastro" class="btn-primary">Faça Sua Inscrição Agora</a>
       </div>
     </section>
 
@@ -39,11 +35,11 @@ const templates = {
       <div class="about-content">
         <div class="about-text">
           <h2>Nossa Missão</h2>
-          <p>Somos uma organização sem fins lucrativos impulsionada pela paixão em ajudar. Atuamos na base, oferecendo suporte contínuo a famílias em vulnerabilidade e promovendo autonomia e esperança.</p>
-          <a href="#/projetos" class="btn-secondary" data-route="/projetos">Conheça Nossos Projetos &rarr;</a>
+          <p>Somos uma organização sem fins lucrativos impulsionada pela paixão em ajudar. Atuamos diretamente na base, oferecendo suporte contínuo a famílias em situação de vulnerabilidade e promovendo autonomia e esperança.</p>
+          <a href="#/projetos" class="btn-secondary">Conheça Nossos Projetos &rarr;</a>
         </div>
         <div class="about-image">
-          <img src="img/missao-removebg-preview.png" alt="Nossa missão ilustrada">
+          <img src="img/missao-removebg-preview.png" alt="Nossa missão">
         </div>
       </div>
     </section>
@@ -53,89 +49,77 @@ const templates = {
       <div class="cards-container">
         <article class="card">
           <h3>🍲 Apoio Alimentar</h3>
-          <p>Garantimos segurança alimentar com cestas básicas e refeições nutritivas.</p>
+          <p>Distribuímos cestas básicas e refeições nutritivas.</p>
         </article>
         <article class="card">
           <h3>👩‍🏫 Educação e Oficinas</h3>
-          <p>Capacitação profissional, reforço escolar e workshops de cidadania.</p>
+          <p>Capacitação profissional, reforço escolar e cidadania.</p>
         </article>
         <article class="card">
           <h3>💪 Inclusão Social</h3>
-          <p>Atividades que fortalecem laços comunitários e acesso a direitos.</p>
+          <p>Atividades comunitárias e acesso a serviços básicos.</p>
         </article>
       </div>
     </section>
 
     <section class="stats-section">
-      <h2>Nosso Impacto Até Hoje</h2>
+      <h2>Nosso Impacto</h2>
       <div class="stats-container">
         <div class="stat-item"><span class="number">1200+</span><p>Famílias Apoiadas</p></div>
-        <div class="stat-item"><span class="number">300+</span><p>Voluntários Ativos</p></div>
-        <div class="stat-item"><span class="number">15+</span><p>Projetos em Andamento</p></div>
+        <div class="stat-item"><span class="number">300+</span><p>Voluntários</p></div>
+        <div class="stat-item"><span class="number">15+</span><p>Projetos Ativos</p></div>
       </div>
     </section>
   `,
 
   projetos: `
     <section class="hero hero-projetos">
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay"></></div>
       <div class="hero-content">
         <h1>Nossos Projetos e Ações</h1>
-        <p>Conheça as iniciativas que transformam vidas e veja como participar.</p>
+        <p>Conheça as iniciativas que transformam vidas.</p>
+        <a href="#/cadastro" class="btn-primary">Seja Voluntário</a>
       </div>
     </section>
 
     <section class="projects">
       <h2>Projetos em Andamento</h2>
       <div class="projects-container">
-
         <article class="project-card">
           <img src="img/humanitario.webp" alt="Ação humanitária" class="project-image">
-          <div class="project-info">
-            <h3>🤝 Ação Humanitária</h3>
-            <p>Atendimento emergencial em comunidades com alta vulnerabilidade.</p>
-          </div>
+          <h3>🍞 Alimentar Esperança</h3>
+          <p>Distribuição de alimentos e refeições em comunidades.</p>
         </article>
 
         <article class="project-card">
-          <img src="img/educacao.jpg" alt="Atividade de educação" class="project-image">
-          <div class="project-info">
-            <h3>📚 Educação Para Todos</h3>
-            <p>Oficinas, reforço escolar e formação cidadã para crianças e jovens.</p>
-          </div>
+          <img src="img/educacao.jpg" alt="Aulas voluntárias" class="project-image">
+          <h3>📚 Educação para Todos</h3>
+          <p>Oficinas e reforço escolar para crianças e jovens.</p>
         </article>
 
         <article class="project-card">
-          <img src="img/missao-removebg-preview.png" alt="Rede de apoio" class="project-image">
-          <div class="project-info">
-            <h3>🌐 Rede de Apoio</h3>
-            <p>Conexão com serviços públicos, encaminhamentos e acompanhamento.</p>
-          </div>
+          <img src="img/fundocad.jpg" alt="Atividades comunitárias" class="project-image">
+          <h3>💪 Comunidade Ativa</h3>
+          <p>Projetos de inclusão social e convivência comunitária.</p>
         </article>
-
       </div>
     </section>
 
     <section class="doe">
-      <h2>Como Você Pode Ajudar</h2>
-      <p>Contribua com doações financeiras, itens essenciais ou seu tempo como voluntário.</p>
-
+      <h2>Como Ajudar</h2>
+      <p>Doações, tempo e talento fazem a diferença!</p>
       <div class="donate-options">
         <article class="donate-card">
           <h3>💰 Doação Financeira</h3>
-          <p>Ajude a manter os projetos e ampliar nosso alcance.</p>
-          <a href="#/cadastro" class="btn-secondary" data-route="/cadastro">Doar Agora</a>
+          <a href="#/cadastro" class="btn-secondary">Doar Agora</a>
         </article>
-
         <article class="donate-card">
           <h3>🛒 Doação de Itens</h3>
-          <p>Alimentos, roupas, brinquedos e material escolar são bem-vindos.</p>
+          <p>Roupas, alimentos e brinquedos são sempre bem-vindos.</p>
         </article>
-
         <article class="donate-card">
           <h3>⏰ Trabalho Voluntário</h3>
-          <p>Doe suas habilidades e tempo. Toda ajuda é valiosa!</p>
-          <a href="#/cadastro" class="btn-primary" data-route="/cadastro">Torne-se Voluntário</a>
+          <a href="#/cadastro" class="btn-primary">Inscrever-se</a>
         </article>
       </div>
     </section>
@@ -152,53 +136,51 @@ const templates = {
 
     <section class="form-section">
       <h2>Formulário de Inscrição</h2>
-      <form class="cadastro-form" id="formVoluntario" novalidate>
+      <form id="formVoluntario" novalidate>
         <fieldset>
           <legend>Informações Pessoais</legend>
 
           <label for="nome">Nome Completo:</label>
-          <input type="text" id="nome" required>
+          <input type="text" id="nome" name="nome" required>
 
           <label for="email">E-mail:</label>
-          <input type="email" id="email" required>
+          <input type="email" id="email" name="email" required>
 
           <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" inputmode="numeric" placeholder="000.000.000-00"
-                 pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}" required>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
 
           <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" inputmode="numeric" placeholder="(11) 99999-9999"
-                 pattern="\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}" required>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
 
           <label for="nascimento">Data de Nascimento:</label>
-          <input type="date" id="nascimento" required>
+          <input type="date" id="nascimento" name="nascimento" required>
         </fieldset>
 
         <fieldset>
           <legend>Endereço</legend>
 
           <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" required>
+          <input type="text" id="endereco" name="endereco" required>
 
           <label for="cep">CEP:</label>
-          <input type="text" id="cep" inputmode="numeric" placeholder="00000-000"
-                 pattern="\\d{5}-\\d{3}" required>
+          <input type="text" id="cep" name="cep" placeholder="00000-000" required>
 
           <label for="cidade">Cidade:</label>
-          <input type="text" id="cidade" required>
+          <input type="text" id="cidade" name="cidade" required>
 
           <label for="estado">Estado:</label>
-          <select id="estado" required>
+          <select id="estado" name="estado" required>
             <option value="">Selecione</option>
-            <option>SP</option><option>RJ</option><option>MG</option><option>ES</option><option>PR</option><option>RS</option>
+            <option>SP</option><option>RJ</option><option>MG</option>
+            <option>ES</option><option>PR</option><option>RS</option>
           </select>
         </fieldset>
 
         <fieldset>
           <legend>Área de Interesse</legend>
-          <label for="area">Selecione uma área:</label>
-          <select id="area" required>
-            <option value="">Escolha uma opção</option>
+          <label for="area">Área de Atuação:</label>
+          <select id="area" name="area" required>
+            <option value="">Selecione</option>
             <option value="alimentacao">Apoio Alimentar</option>
             <option value="educacao">Educação e Oficinas</option>
             <option value="inclusao">Inclusão Social</option>
@@ -206,248 +188,159 @@ const templates = {
           </select>
 
           <label for="mensagem">Mensagem (opcional):</label>
-          <textarea id="mensagem" rows="4"></textarea>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos um pouco sobre sua motivação..."></textarea>
         </fieldset>
 
         <button type="submit" class="btn-primary">Enviar Cadastro</button>
       </form>
-    </section>
 
-    <!-- Toast (feedback de envio) -->
-    <div id="toast" style="
-      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
-      background: #00a65a; color: #fff; padding: 12px 18px; border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.2); font-weight: 600; display: none; z-index: 9999;">
-      Cadastro enviado com sucesso!
-    </div>
+      <div id="sucessMessage" class="success-message">✅ Cadastro realizado com sucesso!</div>
+      <div id="tabelaVoluntarios"></div>
+    </section>
   `
 };
 
-/* ==========================
-   ROTEADOR (HASH SPA)
-   ========================== */
-const mainEl = document.querySelector("main");
-const routes = ["/home", "/projetos", "/cadastro"];
+/* ======================================================
+   SPA — Router
+   ====================================================== */
+const app = document.getElementById("app");
 
-// Normaliza hash -> '/home' | '/projetos' | '/cadastro'
-function parseHash() {
-  const raw = location.hash.replace(/^#/, "");
-  if (!raw || raw === "/") return "/home";
-  const normalized = raw.startsWith("/") ? raw : `/${raw}`;
-  return routes.includes(normalized) ? normalized : "/home";
+function route() {
+  const hash = location.hash.replace("#/", "");
+  return ["home", "projetos", "cadastro"].includes(hash) ? hash : "home";
 }
 
-// Carrega a rota no <main>
 function render(route) {
-  if (!mainEl) return;
-  mainEl.classList.add("fade-out");
-  const key = route.replace("/", "");
-  const html = templates[key] || templates.home;
-
-  setTimeout(() => {
-    mainEl.innerHTML = html;
-    mainEl.classList.remove("fade-out");
-    mainEl.classList.add("fade-in");
-    localStorage.setItem("rotaAtiva", route);
-    window.scrollTo({ top: 0, behavior: "instant" });
-
-    // Re-ativar handlers específicos de cada rota
-    wireInternalLinks();
-    if (route === "/cadastro") attachFormHandlers();
-
-    setActiveNav(route);
-  }, 160);
+  app.innerHTML = templates[route];
+  highlight(route);
+  if (route === "cadastro") initForm();
 }
 
-// Seta classe .active no menu de acordo com a rota
-function setActiveNav(route) {
-  const nav = document.getElementById("navMenu");
-  if (!nav) return;
-  nav.querySelectorAll("a").forEach(a => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    const isIndex = href.includes("index.html") || href.endsWith("/") || href === "#/home" || href === "#";
-    const isProj  = href.includes("projeto") || href === "#/projetos";
-    const isCad   = href.includes("cadastro") || href === "#/cadastro";
+function navigate(route) {
+  location.hash = "#/" + route;
+  render(route);
+}
 
-    let match = false;
-    if (route === "/home") match = isIndex;
-    if (route === "/projetos") match = isProj;
-    if (route === "/cadastro") match = isCad;
-
-    a.classList.toggle("active", !!match);
+function highlight(route) {
+  document.querySelectorAll("#navMenu a").forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === `#/${route}`);
   });
 }
 
-// Intercepta cliques em links internos e traduz para hash routes
-function wireInternalLinks() {
-  // Links com data-route nos templates
-  document.querySelectorAll("[data-route]").forEach(a => {
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      const r = a.getAttribute("data-route");
-      if (r) location.hash = r;
-    }, { once: true });
-  });
+window.addEventListener("hashchange", () => render(route()));
+document.addEventListener("DOMContentLoaded", () => render(route()));
 
-  // Links do header que apontam para .html (compatibilidade com seu HTML)
-  document.querySelectorAll('#navMenu a[href]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      const href = a.getAttribute("href");
-      if (!href) return;
-      // Traduz anchors para rotas
-      if (href.includes("index.html")) { e.preventDefault(); location.hash = "/home"; }
-      else if (href.includes("projeto")) { e.preventDefault(); location.hash = "/projetos"; }
-      else if (href.includes("cadastro")) { e.preventDefault(); location.hash = "/cadastro"; }
-    });
-  });
-}
-
-/* ==========================
-   FORMULÁRIO (MÁSCARAS + SUBMISSÃO)
-   ========================== */
-function attachFormHandlers() {
+/* ======================================================
+   FORMULÁRIO COMPLETO — Máscaras + LocalStorage
+   ====================================================== */
+function initForm() {
   const form = document.getElementById("formVoluntario");
   if (!form) return;
 
-  // Máscaras simples (on-input) — sem libs externas
+  const onlyDigits = (v) => v.replace(/\D/g, "");
+
   const cpf = form.querySelector("#cpf");
   const tel = form.querySelector("#telefone");
   const cep = form.querySelector("#cep");
 
-  const onlyDigits = (v) => v.replace(/\D/g, "");
+  // Máscara CPF
+  cpf?.addEventListener("input", () => {
+    let v = onlyDigits(cpf.value).slice(0, 11);
+    if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
+    else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
+    else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
+    cpf.value = v;
+  });
 
-  if (cpf) {
-    cpf.addEventListener("input", () => {
-      let v = onlyDigits(cpf.value).slice(0, 11);
-      if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
-      else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
-      else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
-      cpf.value = v;
-    });
-  }
+  // Máscara Telefone
+  tel?.addEventListener("input", () => {
+    let v = onlyDigits(tel.value).slice(0, 11);
+    if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+    else if (v.length > 0) v = v.replace(/(\d{0,2})/, "($1");
+    tel.value = v;
+  });
 
-  if (tel) {
-    tel.addEventListener("input", () => {
-      let v = onlyDigits(tel.value).slice(0, 11);
-      if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
-      else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-      else if (v.length > 0) v = v.replace(/(\d{0,2})/, "($1");
-      tel.value = v;
-    });
-  }
+  // Máscara CEP
+  cep?.addEventListener("input", () => {
+    let v = onlyDigits(cep.value).slice(0, 8);
+    if (v.length > 5) v = v.replace(/(\d{5})(\d{0,3})/, "$1-$2");
+    cep.value = v;
+  });
 
-  if (cep) {
-    cep.addEventListener("input", () => {
-      let v = onlyDigits(cep.value).slice(0, 8);
-      if (v.length > 5) v = v.replace(/(\d{5})(\d{0,3})/, "$1-$2");
-      cep.value = v;
-    });
-  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  // Submissão com validação nativa + toast e armazenamento local
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
     if (!form.checkValidity()) {
-      form.reportValidity();
+      alert("Por favor, preencha todos os campos obrigatórios corretamente.");
       return;
     }
 
-    // Coleta e salva um snapshot (demonstração de localStorage)
     const data = {
-      nome: form.querySelector("#nome")?.value?.trim(),
-      email: form.querySelector("#email")?.value?.trim(),
-      cpf: form.querySelector("#cpf")?.value?.trim(),
-      telefone: form.querySelector("#telefone")?.value?.trim(),
-      nascimento: form.querySelector("#nascimento")?.value,
-      endereco: form.querySelector("#endereco")?.value?.trim(),
-      cep: form.querySelector("#cep")?.value?.trim(),
-      cidade: form.querySelector("#cidade")?.value?.trim(),
-      estado: form.querySelector("#estado")?.value,
-      area: form.querySelector("#area")?.value,
-      mensagem: form.querySelector("#mensagem")?.value?.trim(),
-      ts: new Date().toISOString()
+      nome: form.nome.value.trim(),
+      email: form.email.value.trim(),
+      cpf: form.cpf.value.trim(),
+      telefone: form.telefone.value.trim(),
+      nascimento: form.nascimento.value,
+      endereco: form.endereco.value.trim(),
+      cep: form.cep.value.trim(),
+      cidade: form.cidade.value.trim(),
+      estado: form.estado.value,
+      area: form.area.value,
+      mensagem: form.mensagem.value.trim(),
+      dataCadastro: new Date().toLocaleDateString()
     };
-    try {
-      const registros = JSON.parse(localStorage.getItem("cadastrosVoluntarios") || "[]");
-      registros.push(data);
-      localStorage.setItem("cadastrosVoluntarios", JSON.stringify(registros));
-    } catch { /* noop */ }
 
-    // Feedback visual (toast)
-    showToast("Cadastro enviado com sucesso!");
+    const lista = JSON.parse(localStorage.getItem("voluntarios") || "[]");
+    lista.push(data);
+    localStorage.setItem("voluntarios", JSON.stringify(lista));
 
-    // Limpa o formulário
-    form.reset();
+    const msg = document.getElementById("sucessMessage");
+    msg.classList.add("show");
+    msg.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    setTimeout(() => form.reset(), 2000);
+    setTimeout(() => msg.classList.remove("show"), 3000);
+
+    exibirVoluntarios();
   });
+
+  exibirVoluntarios();
 }
 
-// Toast simples
-function showToast(msg) {
-  let toast = document.getElementById("toast");
-  if (!toast) {
-    toast = document.createElement("div");
-    toast.id = "toast";
-    toast.style.cssText = `
-      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
-      background: #00a65a; color: #fff; padding: 12px 18px; border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.2); font-weight: 600; display: none; z-index: 9999;`;
-    document.body.appendChild(toast);
+/* ======================================================
+   EXIBE VOLUNTÁRIOS
+   ====================================================== */
+function exibirVoluntarios() {
+  const lista = JSON.parse(localStorage.getItem("voluntarios") || "[]");
+  const box = document.getElementById("tabelaVoluntarios");
+  if (!box) return;
+
+  if (lista.length === 0) {
+    box.innerHTML = "<p>Nenhum voluntário cadastrado.</p>";
+    return;
   }
-  toast.textContent = msg || "Tudo certo!";
-  toast.style.display = "block";
-  setTimeout(() => (toast.style.display = "none"), 2500);
-}
 
-/* ==========================
-   ANIMAÇÕES DE TRANSIÇÃO
-   ========================== */
-(function injectFadeAnimations() {
-  const style = document.createElement("style");
-  style.textContent = `
-    .fade-in { animation: fadeIn .25s ease-in; }
-    .fade-out { animation: fadeOut .16s ease-out; }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-    @keyframes fadeOut { from{opacity:1} to{opacity:0} }
+  let html = `
+    <table class="vol-table">
+      <thead>
+        <tr>
+          <th>Nome</th><th>Email</th><th>CPF</th>
+          <th>Telefone</th><th>Cidade</th><th>Estado</th>
+          <th>Área</th><th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
   `;
-  document.head.appendChild(style);
-})();
 
-/* ==========================
-   INICIALIZAÇÃO DA SPA
-   ========================== */
-function go(route) {
-  location.hash = route;
+  html += lista.map(v => `
+    <tr>
+      <td>${v.nome}</td><td>${v.email}</td><td>${v.cpf}</td>
+      <td>${v.telefone}</td><td>${v.cidade}</td><td>${v.estado}</td>
+      <td>${v.area}</td><td>${v.dataCadastro}</td>
+    </tr>
+  `).join("");
+
+  html += "</tbody></table>";
+  box.innerHTML = html;
 }
-
-// Traduz cliques em anchors .html do header para rotas SPA (compat)
-document.addEventListener("click", (e) => {
-  const a = e.target.closest('#navMenu a[href], a[data-route]');
-  if (!a) return;
-
-  // Prioriza data-route quando existir
-  const dr = a.getAttribute("data-route");
-  if (dr) { e.preventDefault(); return go(dr); }
-
-  const href = (a.getAttribute("href") || "").toLowerCase();
-  if (!href) return;
-
-  // Converte links antigos para hash routes
-  if (href.includes("index.html")) { e.preventDefault(); go("/home"); }
-  else if (href.includes("projeto")) { e.preventDefault(); go("/projetos"); }
-  else if (href.includes("cadastro")) { e.preventDefault(); go("/cadastro"); }
-  // Links externos/ancoras diferentes seguem normalmente
-});
-
-// Escuta mudanças de hash
-window.addEventListener("hashchange", () => render(parseHash()));
-
-// Carrega rota inicial
-window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("rotaAtiva");
-  if (saved && routes.includes(saved)) {
-    if (!location.hash) location.hash = saved;
-  } else if (!location.hash) {
-    location.hash = "/home";
-  }
-  render(parseHash());
-});
