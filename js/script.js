@@ -1,35 +1,36 @@
 /* ======================================================
-   SCRIPT.JS — SPA + Interações + Formulário + LocalStorage
+   SCRIPT.JS — SPA + Formulário + Tema Escuro
    Projeto: Voluntários
    ====================================================== */
 
 /* ==========================
-   MENU MOBILE — Revisado
+   MENU MOBILE (Acessível)
    ========================== */
 function toggleMenu() {
   const menu = document.getElementById("navMenu");
-  if (menu) menu.classList.toggle("active");
+  if (menu) {
+    menu.classList.toggle("active");
+  }
 }
 
+// Fecha o menu ao clicar fora ou em um link
 document.addEventListener("click", (e) => {
   const toggleBtn = e.target.closest(".menu-toggle");
   const link = e.target.closest("#navMenu a");
 
-  // Abre/fecha o menu mobile
   if (toggleBtn) {
     e.preventDefault();
     toggleMenu();
   }
 
-  // Fecha o menu ao clicar em um link
   if (link) {
-    const nav = document.getElementById("navMenu");
-    nav?.classList.remove("active");
+    const menu = document.getElementById("navMenu");
+    menu?.classList.remove("active");
   }
 });
 
 /* ======================================================
-   SPA — Templates
+   SPA — Templates e Rotas
    ====================================================== */
 const templates = {
   home: `
@@ -46,7 +47,7 @@ const templates = {
         <div class="about-text">
           <h2>Nossa Missão</h2>
           <p>Somos uma organização sem fins lucrativos impulsionada pela paixão em ajudar. Atuamos diretamente na base, oferecendo suporte contínuo a famílias em situação de vulnerabilidade e promovendo autonomia e esperança.</p>
-          <a href="#/projetos" class="btn-secondary">Conheça Nossos Projetos &rarr;</a>
+          <a href="#/projetos" class="btn-secondary">Conheça Nossos Projetos →</a>
         </div>
         <div class="about-image">
           <img src="img/missao.webp" alt="Nossa missão">
@@ -57,18 +58,9 @@ const templates = {
     <section class="how-we-work">
       <h2>Como Geramos Impacto</h2>
       <div class="cards-container">
-        <article class="card">
-          <h3>🍲 Apoio Alimentar</h3>
-          <p>Distribuímos cestas básicas e refeições nutritivas.</p>
-        </article>
-        <article class="card">
-          <h3>👩‍🏫 Educação e Oficinas</h3>
-          <p>Capacitação profissional, reforço escolar e cidadania.</p>
-        </article>
-        <article class="card">
-          <h3>💪 Inclusão Social</h3>
-          <p>Atividades comunitárias e acesso a serviços básicos.</p>
-        </article>
+        <article class="card"><h3>🍲 Apoio Alimentar</h3><p>Distribuímos cestas básicas e refeições nutritivas.</p></article>
+        <article class="card"><h3>👩‍🏫 Educação e Oficinas</h3><p>Capacitação profissional, reforço escolar e cidadania.</p></article>
+        <article class="card"><h3>💪 Inclusão Social</h3><p>Atividades comunitárias e acesso a serviços básicos.</p></article>
       </div>
     </section>
 
@@ -99,13 +91,11 @@ const templates = {
           <h3>🍞 Alimentar Esperança</h3>
           <p>Distribuição de alimentos e refeições em comunidades.</p>
         </article>
-
         <article class="project-card">
           <img src="img/educacao.webp" alt="Aulas voluntárias" class="project-image">
           <h3>📚 Educação para Todos</h3>
           <p>Oficinas e reforço escolar para crianças e jovens.</p>
         </article>
-
         <article class="project-card">
           <img src="img/fundocad.webp" alt="Atividades comunitárias" class="project-image">
           <h3>💪 Comunidade Ativa</h3>
@@ -148,7 +138,6 @@ const templates = {
       <form id="formVoluntario" novalidate>
         <fieldset>
           <legend>Informações Pessoais</legend>
-
           <label for="nome">Nome Completo:</label>
           <input type="text" id="nome" name="nome" required>
 
@@ -167,7 +156,6 @@ const templates = {
 
         <fieldset>
           <legend>Endereço</legend>
-
           <label for="endereco">Endereço:</label>
           <input type="text" id="endereco" name="endereco" required>
 
@@ -205,73 +193,67 @@ const templates = {
 
       <div id="sucessMessage" class="success-message">✅ Cadastro realizado com sucesso!</div>
     </section>
-  `
+  `,
 };
 
-/* ======================================================
-   SPA — Router
-   ====================================================== */
 const app = document.getElementById("app");
 
+/* ======================================================
+   ROTEAMENTO (SPA)
+   ====================================================== */
 function route() {
   const hash = location.hash.replace("#/", "");
   return ["home", "projetos", "cadastro"].includes(hash) ? hash : "home";
 }
 
-function render(route) {
-  app.innerHTML = templates[route];
-  highlight(route);
-  if (route === "cadastro") initForm();
+function render(page) {
+  app.innerHTML = templates[page];
+  highlight(page);
+  if (page === "cadastro") initForm();
 }
 
-function navigate(route) {
-  location.hash = "#/" + route;
-  render(route);
+function navigate(page) {
+  location.hash = "#/" + page;
+  render(page);
 }
 
-function highlight(route) {
-  document.querySelectorAll("#navMenu a").forEach(a => {
-    a.classList.toggle("active", a.getAttribute("href") === `#/${route}`);
+function highlight(page) {
+  document.querySelectorAll("#navMenu a").forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === `#/${page}`);
   });
 }
 
 window.addEventListener("hashchange", () => render(route()));
-document.addEventListener("DOMContentLoaded", () => render(route()));
+document.addEventListener("DOMContentLoaded", () => {
+  render(route());
+  initThemeButton();
+});
 
 /* ======================================================
-   FORMULÁRIO — Máscaras + LocalStorage
+   FORMULÁRIO — Máscaras e Validação
    ====================================================== */
 function initForm() {
   const form = document.getElementById("formVoluntario");
   if (!form) return;
 
   const onlyDigits = (v) => v.replace(/\D/g, "");
-
   const cpf = form.querySelector("#cpf");
   const tel = form.querySelector("#telefone");
   const cep = form.querySelector("#cep");
 
-  // Máscaras
   cpf?.addEventListener("input", () => {
     let v = onlyDigits(cpf.value).slice(0, 11);
-    if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
-    else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
-    else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
-    cpf.value = v;
+    cpf.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, "$1.$2.$3-$4");
   });
 
   tel?.addEventListener("input", () => {
     let v = onlyDigits(tel.value).slice(0, 11);
-    if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
-    else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-    else if (v.length > 0) v = v.replace(/(\d{0,2})/, "($1");
-    tel.value = v;
+    tel.value = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
   });
 
   cep?.addEventListener("input", () => {
     let v = onlyDigits(cep.value).slice(0, 8);
-    if (v.length > 5) v = v.replace(/(\d{5})(\d{0,3})/, "$1-$2");
-    cep.value = v;
+    cep.value = v.replace(/(\d{5})(\d{0,3})/, "$1-$2");
   });
 
   form.addEventListener("submit", (e) => {
@@ -285,9 +267,9 @@ function initForm() {
     const data = Object.fromEntries(new FormData(form).entries());
     data.dataCadastro = new Date().toLocaleDateString();
 
-    const lista = JSON.parse(localStorage.getItem("voluntarios") || "[]");
-    lista.push(data);
-    localStorage.setItem("voluntarios", JSON.stringify(lista));
+    const stored = JSON.parse(localStorage.getItem("voluntarios") || "[]");
+    stored.push(data);
+    localStorage.setItem("voluntarios", JSON.stringify(stored));
 
     const msg = document.getElementById("sucessMessage");
     msg.classList.add("show");
@@ -299,13 +281,47 @@ function initForm() {
 }
 
 /* ======================================================
-   CORREÇÃO — CLIQUES EM BOTÕES DINÂMICOS (BANNERS)
+   MODO ESCURO — Criação e Persistência
+   ====================================================== */
+function initThemeButton() {
+  let btn = document.getElementById("themeToggle");
+
+  // Cria o botão flutuante, se ainda não existir
+  if (!btn) {
+    btn = document.createElement("button");
+    btn.id = "themeToggle";
+    btn.setAttribute("aria-label", "Alternar modo escuro");
+    document.body.appendChild(btn);
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  btn.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") || "light";
+    const next = current === "light" ? "dark" : "light";
+    applyTheme(next);
+  });
+}
+
+function applyTheme(mode) {
+  document.documentElement.setAttribute("data-theme", mode);
+  localStorage.setItem("theme", mode);
+
+  const btn = document.getElementById("themeToggle");
+  if (btn) {
+    btn.textContent = mode === "dark" ? "☀️" : "🌙";
+  }
+}
+
+/* ======================================================
+   NAVEGAÇÃO DE LINKS SPA
    ====================================================== */
 document.addEventListener("click", (e) => {
   const link = e.target.closest("a[href^='#/']");
   if (link) {
     e.preventDefault();
-    const destino = link.getAttribute("href").replace("#/", "");
-    navigate(destino);
+    const target = link.getAttribute("href").replace("#/", "");
+    navigate(target);
   }
 });

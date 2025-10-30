@@ -12,51 +12,68 @@
   <meta name="author" content="Projeto Voluntários">
   <meta name="robots" content="index, follow">
 
-  <!-- ====== Performance e Produção ====== -->
+  <!-- ====== Performance ====== -->
   <meta http-equiv="Cache-Control" content="max-age=31536000, must-revalidate">
   <link rel="preload" href="css/style.min.css" as="style">
   <link rel="preload" href="js/script.min.js" as="script">
-
-  <!-- Versão principal de estilo -->
-  <link rel="stylesheet" href="css/style.min.css">
-
-  <!-- Ícone da aba (opcional, melhora usabilidade) -->
   <link rel="icon" href="img/logo-removebg-preview.png" type="image/png">
+
+  <!-- ====== Estilos ====== -->
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
+  <!-- ====== Acessibilidade: Skip Link ====== -->
+  <a href="#app" class="skip-to-content">Pular para o conteúdo principal</a>
+
   <!-- ====== Cabeçalho / Navegação ====== -->
   <header>
     <nav class="navbar" aria-label="Navegação principal">
       <div class="logo-container">
-        <img src="img/logo-removebg-preview.png" alt="Logo do projeto Voluntários" class="logo">
+        <img src="img/logo-removebg-preview.png"
+             alt="Logo do projeto Voluntários"
+             class="logo"
+             width="48"
+             height="48"
+             decoding="async">
         <span class="logo-text">Voluntários</span>
       </div>
 
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir ou fechar menu de navegação" aria-expanded="false">☰</button>
+      <button class="menu-toggle"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Abrir menu de navegação"
+              onclick="toggleMenu()">☰</button>
 
       <ul id="navMenu" class="nav-menu">
-        <li><a href="#/home" class="active" tabindex="0">Início</a></li>
-        <li><a href="#/projetos" tabindex="0">Projetos</a></li>
-        <li><a href="#/cadastro" tabindex="0">Seja Voluntário</a></li>
+        <li><a href="#/home" class="active">Início</a></li>
+        <li><a href="#/projetos">Projetos</a></li>
+        <li><a href="#/cadastro">Seja Voluntário</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- ====== Conteúdo Principal (SPA container) ====== -->
-  <main id="app" role="main"></main>
+  <main id="app" tabindex="-1" role="main"></main>
 
-  <noscript>
-    <p style="text-align:center; padding:2rem; color:red;">
-      Este site requer JavaScript para funcionar corretamente.
-    </p>
-  </noscript>
+  <!-- ====== Botão de Tema (Dark/Light Mode) ====== -->
+  <button id="themeToggle"
+          class="btn-secondary"
+          aria-label="Alternar modo escuro/claro"
+          title="Alternar modo escuro/claro">
+    🌙
+  </button>
 
   <!-- ====== Rodapé ====== -->
   <footer>
     <div class="footer-container">
       <div class="footer-contact">
-        <img src="img/phone.png" alt="Ícone de telefone" class="footer-icon" loading="lazy">
+        <img src="img/phone.png"
+             alt="Ícone de telefone"
+             class="footer-icon"
+             loading="lazy"
+             width="24"
+             height="24">
         <p>📞 (11) 99999-9999 | ✉️ contato@voluntarios.org</p>
         <p>Rua da Esperança, 123 - São Paulo/SP</p>
       </div>
